@@ -181,7 +181,7 @@
             // 
             // ButtonOpenExistingDocument
             // 
-            ButtonOpenExistingDocument.BackColor = Color.FromArgb(255, 255, 192);
+            ButtonOpenExistingDocument.BackColor = Color.LightGreen;
             ButtonOpenExistingDocument.Cursor = Cursors.Hand;
             ButtonOpenExistingDocument.FlatAppearance.BorderColor = Color.DimGray;
             resources.ApplyResources(ButtonOpenExistingDocument, "ButtonOpenExistingDocument");
