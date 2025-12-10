@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Oog.WarehouseScan Debug": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
