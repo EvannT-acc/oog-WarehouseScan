@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
+﻿using Oog.Core.Extensions;
+using Oog.WarehouseScan.Enumerations;
 using System.ComponentModel;
 
 namespace Oog.WarehouseScan
@@ -23,10 +20,108 @@ namespace Oog.WarehouseScan
         private void InitializeFileList()
         {
             listBoxFiles.Items.Clear();
-            foreach (var file in pdfFiles)
+
+            var filesWithDates = new List<(string filePath, DateTime date, string displayText)>();
+
+            foreach (var filePath in pdfFiles)
             {
-                listBoxFiles.Items.Add(Path.GetFileName(file));
+                var fileInfo = new FileInfo(filePath);
+                var fileName = Path.GetFileNameWithoutExtension(fileInfo.Name);
+
+                var parts = fileName.Split('_');
+
+                if (parts.Length >= 4)
+                {
+                    var scanType = parts[1];
+                    var dateStr = parts[2];
+                    var timeStr = parts[3];
+
+                    string translatedType = scanType;
+                    if (Enum.TryParse(scanType, out ScanTypeEnum scanTypeEnum))
+                    {
+                        translatedType = scanTypeEnum.GetNameTranslated();
+                    }
+
+                    var formattedDate = dateStr.Replace("-", "/");
+
+                    var timeParts = timeStr.Split('-');
+                    var hourMinute = timeParts.Length >= 2 ? $"{timeParts[0]}:{timeParts[1]}" : timeStr;
+
+                    var displayText = $"{translatedType} - {formattedDate} {hourMinute}";
+
+                    if (DateTime.TryParseExact($"{dateStr} {timeStr}",
+                        "dd-MM-yyyy HH-mm-ss",
+                        null,
+                        System.Globalization.DateTimeStyles.None,
+                        out DateTime fileDate))
+                    {
+                        filesWithDates.Add((filePath, fileDate, displayText));
+                    }
+                    else
+                    {
+                        filesWithDates.Add((filePath, DateTime.MaxValue, displayText));
+                    }
+                }
+                else if (parts.Length == 3)
+                {
+                    var scanType = parts[1];
+                    var dateTimeStr = parts[2];
+
+                    string translatedType = scanType;
+                    if (Enum.TryParse(scanType, out ScanTypeEnum scanTypeEnum))
+                    {
+                        translatedType = scanTypeEnum.GetNameTranslated();
+                    }
+
+                    string displayText;
+                    DateTime fileDate = DateTime.MaxValue;
+
+                    if (dateTimeStr.Contains("_"))
+                    {
+                        var dateTimeParts = dateTimeStr.Split('_');
+                        if (dateTimeParts.Length >= 2)
+                        {
+                            var date = dateTimeParts[0].Replace("-", "/");
+                            var time = dateTimeParts[1].Replace("-", ":");
+                            var timeParts = time.Split(':');
+                            var hourMinute = timeParts.Length >= 2 ? $"{timeParts[0]}:{timeParts[1]}" : time;
+                            displayText = $"{translatedType} - {date} {hourMinute}";
+
+                            if (DateTime.TryParseExact($"{dateTimeParts[0]} {dateTimeParts[1]}",
+                                "dd-MM-yyyy HH-mm-ss",
+                                null,
+                                System.Globalization.DateTimeStyles.None,
+                                out fileDate))
+                            {
+                                filesWithDates.Add((filePath, fileDate, displayText));
+                            }
+                        }
+                        else
+                        {
+                            displayText = $"{translatedType} - {dateTimeStr.Replace("-", "/")}";
+                            filesWithDates.Add((filePath, DateTime.MaxValue, displayText));
+                        }
+                    }
+                    else
+                    {
+                        displayText = $"{translatedType} - {dateTimeStr.Replace("-", "/")}";
+                        filesWithDates.Add((filePath, DateTime.MaxValue, displayText));
+                    }
+                }
+                else
+                {
+                    filesWithDates.Add((filePath, DateTime.MaxValue, fileInfo.Name));
+                }
             }
+
+            var sortedFiles = filesWithDates.OrderBy(f => f.date).ToList();
+
+            foreach (var file in sortedFiles)
+            {
+                listBoxFiles.Items.Add(file.displayText);
+            }
+
+            pdfFiles = sortedFiles.Select(f => f.filePath).ToList();
 
             if (listBoxFiles.Items.Count > 0)
             {

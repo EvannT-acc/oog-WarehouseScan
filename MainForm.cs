@@ -800,3 +800,4 @@ namespace Oog.WarehouseScan
         }
     }
 }
+

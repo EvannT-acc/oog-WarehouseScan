@@ -181,7 +181,7 @@
             // 
             // ButtonOpenExistingDocument
             // 
-            ButtonOpenExistingDocument.BackColor = Color.LightGreen;
+            ButtonOpenExistingDocument.BackColor = Color.FromArgb(192, 255, 192);
             ButtonOpenExistingDocument.Cursor = Cursors.Hand;
             ButtonOpenExistingDocument.FlatAppearance.BorderColor = Color.DimGray;
             resources.ApplyResources(ButtonOpenExistingDocument, "ButtonOpenExistingDocument");
@@ -192,7 +192,7 @@
             // labelHistory
             // 
             resources.ApplyResources(labelHistory, "labelHistory");
-            labelHistory.ForeColor = Color.FromArgb(60, 60, 60);
+            labelHistory.ForeColor = Color.Black;
             labelHistory.Name = "labelHistory";
             // 
             // MainForm
