@@ -354,7 +354,6 @@ namespace Oog.WarehouseScan
                             ButtonSave.Enabled = false;
                             ButtonSave.BackColor = Color.FromArgb(224, 224, 224);
                         }
-
                         Log.Debug($"Images restantes dans le panel du bas: {ScannedImages.Count}");
                     };
 
@@ -778,80 +777,24 @@ namespace Oog.WarehouseScan
 
         private void ShowPdfSelectionDialog(List<string> pdfFiles)
         {
-            var selectionForm = new Form
+            using (var selectionForm = new PdfSelectionForm(pdfFiles))
             {
-                Text = "Sélectionnez un PDF à ouvrir",
-                Width = 500,
-                Height = 300,
-                StartPosition = FormStartPosition.CenterParent,
-                FormBorderStyle = FormBorderStyle.FixedDialog,
-                MaximizeBox = false,
-                MinimizeBox = false
-            };
-
-            var listBox = new ListBox
-            {
-                Dock = DockStyle.Fill,
-                Font = new Font("Segoe UI", 10F)
-            };
-
-            foreach (var file in pdfFiles)
-            {
-                listBox.Items.Add(Path.GetFileName(file));
-            }
-
-            if (listBox.Items.Count > 0)
-            {
-                listBox.SelectedIndex = 0;
-            }
-
-            var buttonPanel = new Panel
-            {
-                Dock = DockStyle.Bottom,
-                Height = 50,
-                Padding = new Padding(10)
-            };
-
-            var btnOk = new Button
-            {
-                Text = "Ouvrir",
-                DialogResult = DialogResult.OK,
-                Location = new Point(300, 10),
-                Size = new Size(80, 30)
-            };
-
-            var btnCancel = new Button
-            {
-                Text = "Annuler",
-                DialogResult = DialogResult.Cancel,
-                Location = new Point(390, 10),
-                Size = new Size(80, 30)
-            };
-
-            buttonPanel.Controls.Add(btnOk);
-            buttonPanel.Controls.Add(btnCancel);
-
-            selectionForm.Controls.Add(listBox);
-            selectionForm.Controls.Add(buttonPanel);
-            selectionForm.AcceptButton = btnOk;
-            selectionForm.CancelButton = btnCancel;
-
-            if (selectionForm.ShowDialog(this) == DialogResult.OK &&
-                listBox.SelectedIndex >= 0)
-            {
-                try
+                if (selectionForm.ShowDialog(this) == DialogResult.OK && !string.IsNullOrEmpty(selectionForm.SelectedFilePath))
                 {
-                    string selectedFile = pdfFiles[listBox.SelectedIndex];
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    try
                     {
-                        FileName = selectedFile,
-                        UseShellExecute = true
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Log.Error($"Impossible d'ouvrir le fichier sélectionné", ex);
-                    MessageBox.Show($"Impossible d'ouvrir le fichier : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = selectionForm.SelectedFilePath,
+                            UseShellExecute = true
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error($"Impossible d'ouvrir le fichier sélectionné", ex);
+                        MessageBox.Show($"Impossible d'ouvrir le fichier : {ex.Message}",
+                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
