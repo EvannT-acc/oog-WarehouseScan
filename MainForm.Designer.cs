@@ -119,7 +119,7 @@
             // LabelScanners
             // 
             resources.ApplyResources(LabelScanners, "LabelScanners");
-            LabelScanners.ForeColor = Color.FromArgb(45, 45, 45);
+            LabelScanners.ForeColor = Color.FromArgb(90, 90, 90);
             LabelScanners.Name = "LabelScanners";
             // 
             // ScannerListCombo
@@ -181,10 +181,10 @@
             // 
             // ButtonOpenExistingDocument
             // 
+            resources.ApplyResources(ButtonOpenExistingDocument, "ButtonOpenExistingDocument");
             ButtonOpenExistingDocument.BackColor = Color.FromArgb(192, 255, 192);
             ButtonOpenExistingDocument.Cursor = Cursors.Hand;
             ButtonOpenExistingDocument.FlatAppearance.BorderColor = Color.DimGray;
-            resources.ApplyResources(ButtonOpenExistingDocument, "ButtonOpenExistingDocument");
             ButtonOpenExistingDocument.Name = "ButtonOpenExistingDocument";
             ButtonOpenExistingDocument.UseVisualStyleBackColor = false;
             ButtonOpenExistingDocument.Click += ButtonOpenExistingDocument_Click;
@@ -222,6 +222,7 @@
             Controls.Add(ScannerListCombo);
             ForeColor = Color.FromArgb(30, 30, 30);
             Name = "MainForm";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)loadingGif).EndInit();
             ResumeLayout(false);
             PerformLayout();

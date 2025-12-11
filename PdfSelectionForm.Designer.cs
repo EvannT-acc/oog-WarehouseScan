@@ -92,23 +92,23 @@
             listBoxFiles.BackColor = Color.WhiteSmoke;
             listBoxFiles.BorderStyle = BorderStyle.FixedSingle;
             listBoxFiles.Cursor = Cursors.Hand;
-            listBoxFiles.Font = new Font("Palatino Linotype", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            listBoxFiles.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listBoxFiles.ForeColor = Color.Black;
             listBoxFiles.FormattingEnabled = true;
             listBoxFiles.Location = new Point(10, 45);
             listBoxFiles.Name = "listBoxFiles";
             listBoxFiles.ScrollAlwaysVisible = true;
-            listBoxFiles.Size = new Size(464, 170);
+            listBoxFiles.Size = new Size(464, 162);
             listBoxFiles.TabIndex = 1;
             // 
             // labelTitle
             // 
             labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Palatino Linotype", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTitle.ForeColor = Color.FromArgb(60, 60, 60);
             labelTitle.Location = new Point(8, 14);
             labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(287, 27);
+            labelTitle.Size = new Size(296, 28);
             labelTitle.TabIndex = 0;
             labelTitle.Text = "Sélectionnez un PDF à ouvrir :";
             // 

@@ -49,8 +49,7 @@ namespace Oog.WarehouseScan
 
                     var displayText = $"{translatedType} - {formattedDate} {hourMinute}";
 
-                    if (DateTime.TryParseExact($"{dateStr} {timeStr}",
-                        "dd-MM-yyyy HH-mm-ss",
+                    if (DateTime.TryParseExact($"{dateStr} {timeStr}","dd-MM-yyyy HH-mm-ss",
                         null,
                         System.Globalization.DateTimeStyles.None,
                         out DateTime fileDate))

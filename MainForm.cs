@@ -10,12 +10,18 @@ namespace Oog.WarehouseScan
     public partial class MainForm : Form
     {
         protected log4net.ILog Log { get; } = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private string WarehouseReference { get; set; }
+
         private DocTypeEnum DocType { get; set; }
-        private readonly List<ComboBox> AllComboBoxes = new List<ComboBox>();
-        private List<Image> ScannedImages = new List<Image>();
+
+        private readonly List<ComboBox> AllComboBoxes = [];
+
+        private readonly List<Image> ScannedImages = [];
+
         private bool isDownloading = false;
-        private List<string> ExistingPdfPaths = new List<string>();
+
+        private List<string> ExistingPdfPaths = [];
 
         public MainForm()
         {
@@ -59,7 +65,6 @@ namespace Oog.WarehouseScan
                     }
                 }
             };
-
         }
 
         private void ClearOrderDetails()
@@ -77,7 +82,6 @@ namespace Oog.WarehouseScan
 
         private void ComboBoxScannerInitialize()
         {
-
             Task.Run(() =>
             {
                 try
@@ -265,11 +269,15 @@ namespace Oog.WarehouseScan
                 {
                     try
                     {
+                        Log.Debug("Lancement du scan des documents");
+
                         var command = OogFactory.GetService<ScanDocumentCommand>();
                         command.SelectedScanner = scanner;
                         command.TwainSession = FetchScannersCommand.TwainSession;
                         command.Execute();
-                        Log.Debug("Lancement du scan des documents");
+
+                        Thread.Sleep(5000);
+                        ButtonScan.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -281,7 +289,6 @@ namespace Oog.WarehouseScan
 
         private void TwainSession_DataTransferred(object sender, NTwain.DataTransferredEventArgs e)
         {
-
             try
             {
                 using (var image = new MagickImage(e.FileDataPath, new MagickReadSettings { Compression = CompressionMethod.BZip }))
@@ -440,6 +447,7 @@ namespace Oog.WarehouseScan
             {
                 rotatedImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
             }
+
             return rotatedImage;
         }
 
@@ -467,6 +475,7 @@ namespace Oog.WarehouseScan
                 Text = "✕",
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold)
             };
+
             result.FlatAppearance.BorderSize = 0;
             return result;
         }
@@ -486,18 +495,21 @@ namespace Oog.WarehouseScan
         private class ScanTag(Image Original, int OrientationInDegree)
         {
             public Image Original { get; set; } = Original;
+
             public int OrientationInDegree { get; set; } = OrientationInDegree;
         }
 
         private class DocumentType(ScanTypeEnum type, string name)
         {
             public ScanTypeEnum Type { get; } = type;
+
             public string Name { get; } = name;
         }
 
         private class ImageAndScanType(Image image, ScanTypeEnum scanType)
         {
             public Image image { get; } = image;
+
             public ScanTypeEnum scanType { get; } = scanType;
         }
 
@@ -800,4 +812,3 @@ namespace Oog.WarehouseScan
         }
     }
 }
-

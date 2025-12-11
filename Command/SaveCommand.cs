@@ -18,7 +18,7 @@ namespace Oog.WarehouseScan.Command
         public string FileName { get; set; }
         public List<Image?> Images { get; internal set; }
         public string Path { get; private set; }
-        public string SageDocumentType { get; private set; }
+        public string ZTYPEDOC { get; private set; }
 
         protected override void OnExtendValidation(ValidationResults vr)
         {
@@ -64,7 +64,12 @@ namespace Oog.WarehouseScan.Command
                     fileStream.Flush();
                 }
 
-                var result = EndPoints.ScanDocument<ScanDocumentResult>(SageDocumentType, InternalReference, FileName, EnumExtensions.GetDescription(ScanType));
+                var result = EndPoints.ScanDocument<ScanDocumentResult>(
+                    ZTYPE,
+                    InternalReference,
+                    FileName,
+                    ZTYPEDOC
+                    );
 
                 if (!result.IsSuccess || result.ReturnCode != 1)
                 {
@@ -86,7 +91,7 @@ namespace Oog.WarehouseScan.Command
         {
 
             Path = string.Empty;
-            SageDocumentType = string.Empty;
+            ZTYPEDOC = string.Empty;
 
             switch (DocType)
             {
@@ -96,14 +101,14 @@ namespace Oog.WarehouseScan.Command
                     {
                         case ScanTypeEnum.Shipping:
                             Path = ApplicationSettings.ShippingDirPath;
-                            SageDocumentType = "5";
-                            Log.Debug($"Scan d'expédition -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                            ZTYPEDOC = "5";
+                            Log.Debug($"Scan d'expédition -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                             break;
 
                         case ScanTypeEnum.Loading:
                             Path = ApplicationSettings.LoadingDirPath;
-                            SageDocumentType = "6";
-                            Log.Debug($"Scan de chargement -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                            ZTYPEDOC = "6";
+                            Log.Debug($"Scan de chargement -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                             break;
                         default:
                             Log.Error($"ScanType non géré pour DeliveryTour: {ScanType}");
@@ -117,18 +122,18 @@ namespace Oog.WarehouseScan.Command
                     {
                         case ScanTypeEnum.Receipt:
                             Path = ApplicationSettings.SupplierReceiptDirPath;
-                            SageDocumentType = "0";
-                            Log.Debug($"Réception fournisseur -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                            ZTYPEDOC = "0";
+                            Log.Debug($"Réception fournisseur -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                             break;
                         case ScanTypeEnum.Delivery:
                             Path = ApplicationSettings.SupplierDeliveryDirPath;
-                            SageDocumentType = "1";
-                            Log.Debug($"Livraison fournisseur -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                            ZTYPEDOC = "1";
+                            Log.Debug($"Livraison fournisseur -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                             break;
                         case ScanTypeEnum.Waybill:
                             Path = ApplicationSettings.SupplierWaybillDirPath;
-                            SageDocumentType = "2";
-                            Log.Debug($"Bordereau fournisseur -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                            ZTYPEDOC = "2";
+                            Log.Debug($"Bordereau fournisseur -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                             break;
                         default:
                             Log.Error($"ScanType non géré pour Supplier: {ScanType}");
@@ -138,26 +143,26 @@ namespace Oog.WarehouseScan.Command
 
                 case DocTypeEnum.IncidentSav:
                     Path = ApplicationSettings.IncidentSavDirPath;
-                    SageDocumentType = "ZDS";
-                    Log.Debug($"Incident SAV -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                    ZTYPE = "ZDS";
+                    Log.Debug($"Incident SAV -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                     break;
 
                 case DocTypeEnum.IncidentClient:
                     Path = ApplicationSettings.IncidentClientDirPath;
-                    SageDocumentType = "ZDC";
-                    Log.Debug($"Incident client -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                    ZTYPE = "ZDC";
+                    Log.Debug($"Incident client -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                     break;
 
                 case DocTypeEnum.ErpRtc:
                     Path = ApplicationSettings.RtcDirPath;
-                    SageDocumentType = "SRH";
-                    Log.Debug($"ERP RTC -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                    ZTYPE = "SRH";
+                    Log.Debug($"ERP RTC -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                     break;
 
                 case DocTypeEnum.ErpLvc:
                     Path = ApplicationSettings.LvcDirPath;
-                    SageDocumentType = "SDH";
-                    Log.Debug($"ERP LVC -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                    ZTYPE = "SDH";
+                    Log.Debug($"ERP LVC -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                     break;
 
                 case DocTypeEnum.ErpWeb:
@@ -167,8 +172,8 @@ namespace Oog.WarehouseScan.Command
                 case DocTypeEnum.ErpSav:
                 case DocTypeEnum.Oonet:
                     Path = ApplicationSettings.CustomersOrdersDirPath;
-                    SageDocumentType = "SOH";
-                    Log.Debug($"Commande client (ERP/Oonet) -> Chemin: {Path}, Type Sage: {SageDocumentType}");
+                    ZTYPE = "SOH";
+                    Log.Debug($"Commande client (ERP/Oonet) -> Chemin: {Path}, Type Sage: {ZTYPEDOC}");
                     break;
 
                 default:
@@ -182,13 +187,13 @@ namespace Oog.WarehouseScan.Command
                 switch (ScanType)
                 {
                     case ScanTypeEnum.CustomerMail:
-                        SageDocumentType = "C";
+                        ZTYPEDOC = "C";
                         break;
                     case ScanTypeEnum.Signed:
-                        SageDocumentType = "E";
+                        ZTYPEDOC = "E";
                         break;
                     case ScanTypeEnum.Attestation:
-                        SageDocumentType = "A";
+                        ZTYPEDOC = "A";
                         break;
                 }
             }
@@ -206,8 +211,10 @@ namespace Oog.WarehouseScan.Command
                 Path = Path.Replace("[DELIVERYTOUR-REFERENCE]", InternalReference);
             }
 
-            Log.Debug($"Chemin de téléchargement déterminé : {Path}, Type Sage final: {SageDocumentType}");
+            Log.Debug($"Chemin de téléchargement déterminé : {Path}, Type Sage final: {ZTYPEDOC}");
             return Path;
         }
+
+        public string ZTYPE { get; set; }
     }
 }

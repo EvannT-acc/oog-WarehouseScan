@@ -85,4 +85,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NTwain\Data\" />
+  </ItemGroup>
+
 </Project>

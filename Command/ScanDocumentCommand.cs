@@ -42,18 +42,22 @@ namespace Oog.WarehouseScan.Command
                         {
                             SelectedScanner.Capabilities.ICapXferMech.SetValue(NTwain.Data.XferMech.File);
                         }
+
                         if (SelectedScanner.Capabilities.ICapCompression.IsSupported)
                         {
                             SelectedScanner.Capabilities.ICapCompression.SetValue(NTwain.Data.CompressionType.Png);
                         }
+
                         if (SelectedScanner.Capabilities.ICapImageFileFormat.IsSupported)
                         {
                             SelectedScanner.Capabilities.ICapImageFileFormat.SetValue(NTwain.Data.FileFormat.Png);
                         }
+
                         if (SelectedScanner.Capabilities.ICapXResolution.IsSupported)
                         {
                             SelectedScanner.Capabilities.ICapXResolution.SetValue(150f);
                         }
+
                         if (SelectedScanner.Capabilities.ICapYResolution.IsSupported)
                         {
                             SelectedScanner.Capabilities.ICapYResolution.SetValue(150f);

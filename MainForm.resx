@@ -122,7 +122,7 @@
     <value>Segoe UI, 20pt</value>
   </data>
   <data name="TextBoxInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 24</value>
+    <value>26, 46</value>
   </data>
   <data name="TextBoxInput.PlaceholderText" xml:space="preserve">
     <value> Saisissez votre numéro</value>
@@ -147,19 +147,19 @@
     <value>17</value>
   </data>
   <data name="ButtonValitdateTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 12pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="ButtonValitdateTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>413, 24</value>
+    <value>385, 45</value>
   </data>
   <data name="ButtonValitdateTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 45</value>
+    <value>116, 46</value>
   </data>
   <data name="ButtonValitdateTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="ButtonValitdateTextBox.Text" xml:space="preserve">
-    <value>Confirmer</value>
+    <value>CONFIRMER</value>
   </data>
   <data name="&gt;&gt;ButtonValitdateTextBox.Name" xml:space="preserve">
     <value>ButtonValitdateTextBox</value>
@@ -184,7 +184,7 @@
     <value />
   </data>
   <data name="loadingGif.Location" type="System.Drawing.Point, System.Drawing">
-    <value>546, 23</value>
+    <value>518, 45</value>
   </data>
   <data name="loadingGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 46</value>
@@ -208,10 +208,10 @@
     <value>8</value>
   </data>
   <data name="LabelInputHelp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 11.25pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="LabelInputHelp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 2</value>
+    <value>26, 24</value>
   </data>
   <data name="LabelInputHelp.Size" type="System.Drawing.Size, System.Drawing">
     <value>590, 18</value>
@@ -234,14 +234,17 @@
   <data name="&gt;&gt;LabelInputHelp.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="comboBoxSelectModeType.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
   <data name="comboBoxSelectModeType.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 11.25pt, style=Bold</value>
+    <value>Segoe UI, 11.25pt</value>
   </data>
   <data name="comboBoxSelectModeType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 133</value>
+    <value>26, 154</value>
   </data>
   <data name="comboBoxSelectModeType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 29</value>
+    <value>207, 28</value>
   </data>
   <data name="comboBoxSelectModeType.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -259,10 +262,10 @@
     <value>6</value>
   </data>
   <data name="LabelTextBoxError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 15.75pt, style=Bold</value>
+    <value>Segoe UI, 15.75pt, style=Bold</value>
   </data>
   <data name="LabelTextBoxError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 72</value>
+    <value>26, 94</value>
   </data>
   <data name="LabelTextBoxError.Size" type="System.Drawing.Size, System.Drawing">
     <value>590, 28</value>
@@ -286,16 +289,16 @@
     <value>5</value>
   </data>
   <data name="LabelTextBoxTypeDetected.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 26.25pt, style=Bold</value>
+    <value>Segoe UI, 20pt, style=Bold</value>
   </data>
   <data name="LabelTextBoxTypeDetected.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LabelTextBoxTypeDetected.Location" type="System.Drawing.Point, System.Drawing">
-    <value>748, 17</value>
+    <value>724, 41</value>
   </data>
   <data name="LabelTextBoxTypeDetected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 48</value>
+    <value>575, 48</value>
   </data>
   <data name="LabelTextBoxTypeDetected.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -319,13 +322,13 @@
     <value>True</value>
   </data>
   <data name="LabelOrderDetailsLine1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 15.75pt, style=Bold</value>
+    <value>Segoe UI, 15.75pt</value>
   </data>
   <data name="LabelOrderDetailsLine1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>752, 65</value>
+    <value>724, 87</value>
   </data>
   <data name="LabelOrderDetailsLine1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 28</value>
+    <value>271, 30</value>
   </data>
   <data name="LabelOrderDetailsLine1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -349,13 +352,13 @@
     <value>True</value>
   </data>
   <data name="LabelOrderDetailsLine2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 15.75pt, style=Bold</value>
+    <value>Segoe UI, 15.75pt</value>
   </data>
   <data name="LabelOrderDetailsLine2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>752, 99</value>
+    <value>724, 121</value>
   </data>
   <data name="LabelOrderDetailsLine2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 28</value>
+    <value>271, 30</value>
   </data>
   <data name="LabelOrderDetailsLine2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -379,13 +382,13 @@
     <value>True</value>
   </data>
   <data name="LabelOrderDetailsLine3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 15.75pt, style=Bold</value>
+    <value>Segoe UI, 15.75pt</value>
   </data>
   <data name="LabelOrderDetailsLine3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>752, 132</value>
+    <value>724, 154</value>
   </data>
   <data name="LabelOrderDetailsLine3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 28</value>
+    <value>271, 30</value>
   </data>
   <data name="LabelOrderDetailsLine3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -412,13 +415,13 @@
     <value>True</value>
   </data>
   <data name="LabelScanners.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 14.25pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="LabelScanners.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1294, 2</value>
+    <value>1321, 24</value>
   </data>
   <data name="LabelScanners.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 26</value>
+    <value>170, 21</value>
   </data>
   <data name="LabelScanners.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -445,7 +448,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="ScannerListCombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1294, 32</value>
+    <value>1321, 54</value>
   </data>
   <data name="ScannerListCombo.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 29</value>
@@ -469,19 +472,19 @@
     <value>Top, Right</value>
   </data>
   <data name="ButtonScan.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 26.25pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="ButtonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1589, 24</value>
+    <value>1583, 22</value>
   </data>
   <data name="ButtonScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 78</value>
+    <value>293, 61</value>
   </data>
   <data name="ButtonScan.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="ButtonScan.Text" xml:space="preserve">
-    <value>Scanner</value>
+    <value>LANCER LA NUMERISATION</value>
   </data>
   <data name="&gt;&gt;ButtonScan.Name" xml:space="preserve">
     <value>ButtonScan</value>
@@ -502,7 +505,7 @@
     <value>True</value>
   </data>
   <data name="PanelScans.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 167</value>
+    <value>26, 190</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="PanelScans.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -512,7 +515,7 @@
     <value>5, 5, 5, 5</value>
   </data>
   <data name="PanelScans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1838, 803</value>
+    <value>1850, 825</value>
   </data>
   <data name="PanelScans.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -533,19 +536,19 @@
     <value>Bottom, Right</value>
   </data>
   <data name="ButtonSave.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 27.75pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="ButtonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1449, 857</value>
+    <value>1576, 911</value>
   </data>
   <data name="ButtonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>383, 70</value>
+    <value>265, 70</value>
   </data>
   <data name="ButtonSave.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="ButtonSave.Text" xml:space="preserve">
-    <value>Enregistrer</value>
+    <value>ENREGISTRER</value>
   </data>
   <data name="&gt;&gt;ButtonSave.Name" xml:space="preserve">
     <value>ButtonSave</value>
@@ -560,7 +563,7 @@
     <value>7</value>
   </data>
   <data name="progressBarDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 884</value>
+    <value>50, 927</value>
   </data>
   <data name="progressBarDownload.Size" type="System.Drawing.Size, System.Drawing">
     <value>533, 32</value>
@@ -584,13 +587,13 @@
     <value>True</value>
   </data>
   <data name="labelDownload.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 20.25pt, style=Bold</value>
+    <value>Segoe UI, 20.25pt, style=Bold</value>
   </data>
   <data name="labelDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 842</value>
+    <value>51, 885</value>
   </data>
   <data name="labelDownload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 37</value>
+    <value>251, 37</value>
   </data>
   <data name="labelDownload.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -611,19 +614,19 @@
     <value>3</value>
   </data>
   <data name="LabelComboBoxSelectModeTypeInfo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 11.25pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="LabelComboBoxSelectModeTypeInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 108</value>
+    <value>26, 128</value>
   </data>
   <data name="LabelComboBoxSelectModeTypeInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>353, 23</value>
+    <value>495, 23</value>
   </data>
   <data name="LabelComboBoxSelectModeTypeInfo.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="LabelComboBoxSelectModeTypeInfo.Text" xml:space="preserve">
-    <value>Sélection d'un type pour l'ensemble des images</value>
+    <value>Sélection d'un type de document pour l'ensemble des images</value>
   </data>
   <data name="&gt;&gt;LabelComboBoxSelectModeTypeInfo.Name" xml:space="preserve">
     <value>LabelComboBoxSelectModeTypeInfo</value>
@@ -637,23 +640,26 @@
   <data name="&gt;&gt;LabelComboBoxSelectModeTypeInfo.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="ButtonOpenExistingDocument.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="ButtonOpenExistingDocument.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="ButtonOpenExistingDocument.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="ButtonOpenExistingDocument.Location" type="System.Drawing.Point, System.Drawing">
-    <value>631, 129</value>
+    <value>1735, 89</value>
   </data>
   <data name="ButtonOpenExistingDocument.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 34</value>
+    <value>141, 44</value>
   </data>
   <data name="ButtonOpenExistingDocument.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="ButtonOpenExistingDocument.Text" xml:space="preserve">
-    <value>Visionner PDF</value>
+    <value>VISIONNER PDF</value>
   </data>
   <data name="&gt;&gt;ButtonOpenExistingDocument.Name" xml:space="preserve">
     <value>ButtonOpenExistingDocument</value>
@@ -668,22 +674,22 @@
     <value>1</value>
   </data>
   <data name="labelHistory.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Palatino Linotype, 15.75pt, style=Bold</value>
+    <value>Segoe UI, 14.25pt, style=Bold</value>
   </data>
   <data name="labelHistory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="labelHistory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>271, 131</value>
+    <value>1377, 90</value>
   </data>
   <data name="labelHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 30</value>
+    <value>350, 41</value>
   </data>
   <data name="labelHistory.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="labelHistory.Text" xml:space="preserve">
-    <value>-- labelHistory -- </value>
+    <value>Cette référence a déjà été numérisée :</value>
   </data>
   <data name="labelHistory.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -707,13 +713,16 @@
     <value>7, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1941, 979</value>
+    <value>1904, 1041</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
   </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>WindowsDefaultBounds</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Oog.WarehouseScan 1.00</value>
+    <value>Oog.WarehouseScan 1.01</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
