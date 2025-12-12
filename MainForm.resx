@@ -680,10 +680,10 @@
     <value>NoControl</value>
   </data>
   <data name="labelHistory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1377, 90</value>
+    <value>1384, 90</value>
   </data>
   <data name="labelHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 41</value>
+    <value>352, 41</value>
   </data>
   <data name="labelHistory.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

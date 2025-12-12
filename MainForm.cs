@@ -21,6 +21,8 @@ namespace Oog.WarehouseScan
 
         private bool isDownloading = false;
 
+        private bool scanErrorPopupOpen = false;
+
         private List<string> ExistingPdfPaths = [];
 
         public MainForm()
@@ -84,29 +86,25 @@ namespace Oog.WarehouseScan
         {
             Task.Run(() =>
             {
-                try
+                var command = OogFactory.GetService<FetchScannersCommand>();
+                command.Execute();
+                var session = FetchScannersCommand.TwainSession;
+                session.TransferError += (s, args) =>
                 {
-                    var command = OogFactory.GetService<FetchScannersCommand>();
-                    command.Execute();
-
-                    FetchScannersCommand.TwainSession.DataTransferred += TwainSession_DataTransferred;
-
-                    ScannerListCombo.Invoke(() =>
+                    this.Invoke(() =>
                     {
-                        ScannerListCombo.DataSource = command.Scanners;
-                        ScannerListCombo.DisplayMember = "Name";
-
-                        var selectedScanner = ScannerListCombo.SelectedItem;
-                        if (selectedScanner != null)
-                        {
-                        }
-
+                        scanErrorPopupOpen = true;
+                        scanErrorPopupOpen = false;
+                        ButtonScan.Enabled = true;
+                        ButtonScan.BackColor = Color.FromArgb(215, 228, 242);
                     });
-                }
-                catch (Exception ex)
+                };
+                session.DataTransferred += TwainSession_DataTransferred;
+                ScannerListCombo.Invoke(() =>
                 {
-                    Log.Error("Erreur lors de l'initialisation des scanners", ex);
-                }
+                    ScannerListCombo.DataSource = command.Scanners;
+                    ScannerListCombo.DisplayMember = "Name";
+                });
             });
         }
 
@@ -257,35 +255,59 @@ namespace Oog.WarehouseScan
 
         private void ButtonScan_Click(object sender, EventArgs e)
         {
+            ButtonScan.Enabled = false;
+            ButtonScan.BackColor = Color.FromArgb(224, 224, 224);
+
             var scanner = ScannerListCombo.SelectedItem as DataSource;
 
             if (scanner == null)
             {
                 Log.Error("Aucun scanner sélectionné");
             }
-            else
+
+            Task.Run(() =>
             {
-                Task.Run(() =>
+                try
                 {
-                    try
+                    Log.Debug("Numérisation du scan des documents");
+
+                    var command = OogFactory.GetService<ScanDocumentCommand>();
+                    command.SelectedScanner = scanner;
+                    command.TwainSession = FetchScannersCommand.TwainSession;
+                    command.Execute();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"Erreur lors du lancement de la numérisation avec {scanner.Name}", ex);
+
+                    this.Invoke((MethodInvoker)(() =>
                     {
-                        Log.Debug("Lancement du scan des documents");
-
-                        var command = OogFactory.GetService<ScanDocumentCommand>();
-                        command.SelectedScanner = scanner;
-                        command.TwainSession = FetchScannersCommand.TwainSession;
-                        command.Execute();
-
-                        Thread.Sleep(5000);
                         ButtonScan.Enabled = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error($"Erreur lors du lancement du scan avec {scanner.Name}", ex);
-                    }
-                });
-            }
+                        ButtonScan.BackColor = Color.FromArgb(215, 228, 242);
+
+                        if (ex.Message.Contains("allumé") || ex.Message.Contains("connecté"))
+                        {
+                            MessageBox.Show(
+                                "Vérifiez que votre scanner soit bien allumé et connecté.",
+                                "Erreur Scanner",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                $"Erreur lors du scan: {ex.Message}",
+                                "Erreur",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                        }
+                    }));
+                }
+            });
         }
+
 
         private void TwainSession_DataTransferred(object sender, NTwain.DataTransferredEventArgs e)
         {
@@ -318,6 +340,15 @@ namespace Oog.WarehouseScan
             {
                 Log.Error($"Erreur lors du traitement de l'image scannée: {e.FileDataPath}", ex);
             }
+            if (!scanErrorPopupOpen)
+            {
+                this.Invoke((MethodInvoker)(() =>
+                {
+                    ButtonScan.Enabled = true;
+                    ButtonScan.BackColor = Color.FromArgb(215, 228, 242);
+                }));
+            }
+
         }
 
         private void AddScannedPictureToPanel(Image img, DocTypeEnum docType)
@@ -481,7 +512,7 @@ namespace Oog.WarehouseScan
         }
 
         private static Panel CreateContainer(Image img, int panelWidth, int panelHeight, int spacing)
-        {      
+        {
             return new Panel
             {
                 Width = panelWidth,
@@ -767,7 +798,6 @@ namespace Oog.WarehouseScan
                     }
                     else if (existingFiles.Count == 1)
                     {
-                        // Ouvre le fichier PDF avec l'application par défaut du système
                         System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                         {
                             FileName = existingFiles[0],
